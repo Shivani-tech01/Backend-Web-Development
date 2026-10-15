@@ -16,12 +16,13 @@ module.exports = function requireRole(...allowedRoles) {
       return res.status(403).json({
         error: {
           code: 'FORBIDDEN',
-          message: 'Access forbidden: insufficient permissions'
+          message: 'You do not have permission to perform this action'
         }
       });
     }
 
     // User is authenticated and has the required role
-    next();
+    return next();
   };
-};
+}
+
